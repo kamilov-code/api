@@ -5,6 +5,7 @@
   "scripts": {
     "start": "NODE_ENV=production node dist/app.js",
     "dev": "NODE_ENV=development nodemon src/app.ts",
+    "dev:watch": "nodemon -w src -e ts,js --exec \"ts-node src/app.ts\"",
     "build": "tsc",
     "test": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watch"

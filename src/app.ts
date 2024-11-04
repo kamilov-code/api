@@ -9,6 +9,10 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
+app.get("/", (_req, res) => {
+  res.status(200).json({ status: "healthy" });
+});
+
 if (process.env.NODE_ENV !== "test") {
   app.listen(config.port, () => {
     console.log(
