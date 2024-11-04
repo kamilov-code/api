@@ -1,3 +1,13 @@
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
 # Logs
 logs
 *.log
@@ -128,3 +138,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# SSL/TLS Certificates - NEVER commit these!
+*.pem
+*.key
+*.crt
+*.csr
+*.srl
+*.cert
+certs/
+certificates/
+ssl/
