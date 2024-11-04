@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "description": "Kamilov Code Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamilov-code/api.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "TypeScript",
+    "Express"
+  ],
+  "author": "Ilia Kamilov <iliakmlv@gmail.com> (https://github.com/IliaKamilov)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kamilov-code/api/issues"
+  },
+  "homepage": "https://github.com/kamilov-code/api#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "eslint": "^9.14.0",
+    "jest": "^29.7.0",
+    "typescript": "^5.6.3"
+  }
+}
