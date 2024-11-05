@@ -5,18 +5,23 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "80:3000"
+      - "443:3443"
     env_file:
       - .env.production
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
 
   dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - "3001:3000"
+      - "3000:3000"
+      - "3443:3443"
     env_file:
       - .env.development
     volumes:
       - ./src:/app/src
+      - ./certificates:/app/certificates
       - ./package.json:/app/package.json
