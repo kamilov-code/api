@@ -14,3 +14,6 @@ dist
 
 # SSL
 certificates/
+
+# IDE
+.vscode/
