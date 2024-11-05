@@ -4,7 +4,7 @@ import helmet from "helmet";
 import http from "http";
 import https from "https";
 import fs from "fs";
-import config from "./config/config";
+import config from "@/config/config.js";
 
 const app = express();
 
