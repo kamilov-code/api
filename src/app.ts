@@ -4,7 +4,8 @@ import helmet from "helmet";
 import http from "http";
 import https from "https";
 import fs from "fs";
-import config from "@/config/config.js";
+import config from "./config/config.js";
+import apiRouter from "./routes/api.routes.js";
 
 const app = express();
 
@@ -12,9 +13,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-app.get("/", (_req, res) => {
-  res.status(200).json({ status: "healthy" });
-});
+app.use("/api", apiRouter);
 
 // Redirect HTTP to HTTPS in production mode
 if (config.nodeEnv === "production" && config.useHttps) {
