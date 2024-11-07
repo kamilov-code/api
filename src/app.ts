@@ -6,12 +6,25 @@ import https from "https";
 import fs from "fs";
 import config from "./config/config.js";
 import apiRouter from "./routes/api.routes.js";
+import path from "path";
 
 const app = express();
 
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+
+app.use(express.static(path.join(process.cwd(), "public")));
+
+// Privacy policy
+app.get("/help/privacy", (_, res) => {
+  res.sendFile(path.join(process.cwd(), "public", "privacy-policy.html"));
+});
+
+// Delete account
+app.get("/help/delete", (_, res) => {
+  res.sendFile(path.join(process.cwd(), "public", "delete-account.html"));
+});
 
 app.use("/api", apiRouter);
 
