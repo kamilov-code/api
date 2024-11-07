@@ -7,6 +7,7 @@ import fs from "fs";
 import config from "./config/config.js";
 import apiRouter from "./routes/api.routes.js";
 import path from "path";
+import authRouter from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -30,7 +31,11 @@ app.get("/help/delete", (_, res) => {
   res.status(200).sendFile(path.join(publicPath, "delete-account.html"));
 });
 
+// API router
 app.use("/api", apiRouter);
+
+// Auth routes
+app.use("/auth", authRouter);
 
 // Redirect HTTP to HTTPS in production mode
 if (config.nodeEnv === "production" && config.useHttps) {

@@ -14,3 +14,5 @@ authRouter.post("/signin", (req, res) => {});
 
 // Delete Account handler
 authRouter.delete("/", (req, res) => {});
+
+export default authRouter;
