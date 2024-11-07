@@ -14,16 +14,20 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-app.use(express.static(path.join(process.cwd(), "public")));
+const publicPath = path.join(process.cwd(), "public");
+
+console.log({ publicPath });
+
+app.use(express.static(publicPath));
 
 // Privacy policy
 app.get("/help/privacy", (_, res) => {
-  res.sendFile(path.join(process.cwd(), "public", "privacy-policy.html"));
+  res.status(200).json({ status: "healthy", message: "Privacy policy" });
 });
 
 // Delete account
 app.get("/help/delete", (_, res) => {
-  res.sendFile(path.join(process.cwd(), "public", "delete-account.html"));
+  res.status(200).sendFile(path.join(publicPath, "delete-account.html"));
 });
 
 app.use("/api", apiRouter);
