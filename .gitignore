@@ -17,3 +17,5 @@ certificates/
 
 # IDE
 .vscode/
+.vercel
+.env*.local
