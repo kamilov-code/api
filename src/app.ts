@@ -6,6 +6,8 @@ import https from "https";
 import fs from "fs";
 import config from "./config/config.js";
 import apiRouter from "./routes/api.routes.js";
+import path from "path";
+import authRouter from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -13,7 +15,27 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
+const publicPath = path.join(process.cwd(), "public");
+
+console.log({ publicPath });
+
+app.use(express.static(publicPath));
+
+// Privacy policy
+app.get("/help/privacy", (_, res) => {
+  res.status(200).json({ status: "healthy", message: "Privacy policy" });
+});
+
+// Delete account
+app.get("/help/delete", (_, res) => {
+  res.status(200).sendFile(path.join(publicPath, "delete-account.html"));
+});
+
+// API router
 app.use("/api", apiRouter);
+
+// Auth routes
+app.use("/auth", authRouter);
 
 // Redirect HTTP to HTTPS in production mode
 if (config.nodeEnv === "production" && config.useHttps) {
