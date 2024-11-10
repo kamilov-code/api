@@ -17,8 +17,6 @@ app.use(express.json());
 
 const publicPath = path.join(process.cwd(), "public");
 
-console.log({ publicPath });
-
 app.use(express.static(publicPath));
 
 // Privacy policy
