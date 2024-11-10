@@ -67,10 +67,12 @@ const authController: AuthController = {
   },
   update: async (req, res) => {
     try {
-      const data = await authService.update(
-        req.headers["authorization"]!,
-        req.body
-      );
+      if (!req.auth) {
+        res.status(401).json({ error: "You must login first" });
+        return;
+      }
+
+      const data = await authService.update(req.auth, req.body);
 
       res.status(200).json({ data });
     } catch (error) {
