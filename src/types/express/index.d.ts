@@ -6,5 +6,9 @@ declare global {
     interface Response {
       auth: (payload: Authentication) => void;
     }
+
+    interface Request {
+      auth?: Authentication;
+    }
   }
 }

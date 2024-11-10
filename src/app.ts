@@ -19,6 +19,12 @@ const publicPath = path.join(process.cwd(), "public");
 
 app.use(express.static(publicPath));
 
+app.get("/", (_, res) => {
+  res.status(200).json({
+    message: "Welcome to the API",
+  });
+});
+
 // Privacy policy
 app.get("/help/privacy", (_, res) => {
   res.status(200).json({ status: "healthy", message: "Privacy policy" });
@@ -58,7 +64,7 @@ app.use(
   }
 );
 
-if (process.env.NODE_ENV !== "test") {
+if (!process.env.VERCEL && process.env.NODE_ENV !== "test") {
   // Create HTTP server
   const httpServer = http.createServer(app);
   httpServer.listen(config.port, () => {
